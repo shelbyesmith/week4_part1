@@ -369,7 +369,63 @@ summary {
 </div>
 
 
+<div id="confidence-intervals" class="section level2">
+<h2>1. Confidence Intervals</h2>
+<p>Mean and confidence interval are meaningful p-value isn’t meaningful here because default NULL= otter length is 0in</p>
+<pre class="r"><code>otter_length&lt;- c(38,41,50,27,32,41,48,60,43)
 
+t.test(otter_length)</code></pre>
+<pre><code>## 
+##  One Sample t-test
+## 
+## data:  otter_length
+## t = 12.932, df = 8, p-value = 1.21e-06
+## alternative hypothesis: true mean is not equal to 0
+## 95 percent confidence interval:
+##  34.69302 49.75142
+## sample estimates:
+## mean of x 
+##  42.22222</code></pre>
+</div>
+<div id="t-test-1-sample" class="section level2">
+<h2>T-test (1-sample)</h2>
+<p>?t.test looks up a function</p>
+<p>See a clain: mean otter length is 50 inches. I’m going to use my sample for otters to test this claim.</p>
+<pre class="r"><code>otter_test&lt;- t.test(x=otter_length, mu=50)
+otter_test</code></pre>
+<pre><code>## 
+##  One Sample t-test
+## 
+## data:  otter_length
+## t = -2.3821, df = 8, p-value = 0.0444
+## alternative hypothesis: true mean is not equal to 50
+## 95 percent confidence interval:
+##  34.69302 49.75142
+## sample estimates:
+## mean of x 
+##  42.22222</code></pre>
+<p>If the population mean is really 50 inches, there is a 4.44% change that I chose a random sample from that population that has a mean at least as far as 50 as my mean.</p>
+</div>
+<div id="two-sample-t-test" class="section level2">
+<h2>Two-sample T-test</h2>
+<p>First use histogram or QQplot</p>
+<pre class="r"><code>desert_bighorns&lt;- c(34, 45, 56, 67, 23, 43, 12, 32)
+sierra_bighorns&lt;- c(23,43,21,11,12,12,13,15)
+
+t.test(x=desert_bighorns, y=sierra_bighorns)</code></pre>
+<pre><code>## 
+##  Welch Two Sample t-test
+## 
+## data:  desert_bighorns and sierra_bighorns
+## t = 2.7697, df = 11.562, p-value = 0.01749
+## alternative hypothesis: true difference in means is not equal to 0
+## 95 percent confidence interval:
+##   4.252872 36.247128
+## sample estimates:
+## mean of x mean of y 
+##     39.00     18.75</code></pre>
+<p>Mean of Desert Bighorns 39 Mean of Sierra Bighorns 18.75 confidence interval usually not reported here Null hypotheses- true difference in means is not equal to 0 p-value: 1% lots of evidence that these were drawn from different populations low chance that these samples were drawn from a population with the same mean</p>
+</div>
 
 
 

@@ -9,3 +9,43 @@ output: html_document
 knitr::opts_chunk$set(echo = TRUE)
 ```
 
+## 1. Confidence Intervals
+
+Mean and confidence interval are meaningful
+p-value isn't meaningful here because default NULL= otter length is 0in 
+
+```{r}
+otter_length<- c(38,41,50,27,32,41,48,60,43)
+
+t.test(otter_length)
+```
+
+## T-test (1-sample)
+
+?t.test looks up a function
+
+See a clain: mean otter length is 50 inches. 
+I'm going to use my sample for otters to test this claim. 
+
+```{r}
+otter_test<- t.test(x=otter_length, mu=50)
+otter_test
+```
+If the population mean is really 50 inches, there is a 4.44% change that I chose a random sample from that population that has a mean at least as far as 50 as my mean. 
+
+## Two-sample T-test
+
+First use histogram or QQplot 
+
+```{r}
+desert_bighorns<- c(34, 45, 56, 67, 23, 43, 12, 32)
+sierra_bighorns<- c(23,43,21,11,12,12,13,15)
+
+t.test(x=desert_bighorns, y=sierra_bighorns)
+```
+Mean of Desert Bighorns 39
+Mean of Sierra Bighorns 18.75
+confidence interval usually not reported here 
+Null hypotheses- true difference in means is not equal to 0
+p-value: 1% lots of evidence that these were drawn from different populations 
+low chance that these samples were drawn from a population with the same mean 
